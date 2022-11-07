@@ -49,6 +49,8 @@ def neighbors_of_certain_b_countries
   # List the name and continent of countries in the continents containing
   # 'Belize', 'Belgium'.
   execute(<<-SQL)
+  select name, continent
+  from countries where  continent in (select distinct continent from countries where name in ('Belize', 'Belgium'))
   SQL
 end
 
